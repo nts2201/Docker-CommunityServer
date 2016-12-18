@@ -39,6 +39,9 @@ ADD config /app/onlyoffice/setup/config/
 ADD assets /app/onlyoffice/setup/assets/
 ADD run-community-server.sh /app/onlyoffice/run-community-server.sh
 RUN chmod -R 755 /app/onlyoffice/*.sh
+RUN bash -c "source /app/onlyoffice/setup/config/build.sh;\
+      perm_change_ugid onlyoffice 1500; \
+      perm_change_ugid mysql 1501;"
 
 VOLUME ["/var/log/onlyoffice"]
 VOLUME ["/var/www/onlyoffice/Data"]
