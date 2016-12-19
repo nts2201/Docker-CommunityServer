@@ -48,7 +48,7 @@ VOLUME ["/var/www/onlyoffice/Data"]
 VOLUME ["/var/lib/mysql"]
 
 EXPOSE 80 443 5222 3306 9865 9888 9866 9871 9882 5280
-RUN bash -c "mysql -uroot -e \
-            'use mysql; "GRANT ALL PRIVILEGES ON *.* TO 'debian-sys-maint'@'localhost' IDENTIFIED BY 'osQio6GtodFcW8aN';'"
+RUN bash -c "CMD_MYSQL=\"use mysql; GRANT ALL PRIVILEGES ON *.* TO 'debian-sys-maint'@'localhost' IDENTIFIED BY 'osQio6GtodFcW8aN';\"\
+            mysql -uroot -e \$CMD_MYSQL;"
 
 CMD exec dumb-init bash --rcfile /app/onlyoffice/run-community-server.sh -i;
