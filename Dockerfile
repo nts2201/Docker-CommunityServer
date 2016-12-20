@@ -29,7 +29,7 @@ RUN echo "${SOURCE_REPO_URL}" >> /etc/apt/sources.list && \
     add-apt-repository -y ppa:builds/sphinxsearch-rel22 && \
     echo "Start=No" >> /etc/init.d/sphinxsearch && \
     apt-get -y update && \
-    apt-get install --force-yes -yq mono-complete ca-certificates-mono && \
+    apt-get install --force-yes -yq mono-complete ca-certificates-mono nginx-extras apache2-utils && \
     echo "#!/bin/sh\nexit 0" > /usr/sbin/policy-rc.d && \
     apt-get install --force-yes -yq dumb-init  sphinxsearch onlyoffice-communityserver htop nano dnsutils && \
     rm -rf /var/lib/apt/lists/*
@@ -46,6 +46,7 @@ RUN bash -c "source /app/onlyoffice/setup/config/build.sh;\
 VOLUME ["/var/log/onlyoffice"]
 VOLUME ["/var/www/onlyoffice/Data"]
 VOLUME ["/var/lib/mysql"]
+VOLUME ["/media/davsonnt"]
 
 EXPOSE 80 443 5222 3306 9865 9888 9866 9871 9882 5280
 RUN service mysql start; bash -c "CMD_MYSQL=\"use mysql; GRANT ALL PRIVILEGES ON *.* TO 'debian-sys-maint'@'localhost' IDENTIFIED BY 'osQio6GtodFcW8aN';\"\
