@@ -734,3 +734,23 @@ if [ "${ONLYOFFICE_MODE}" == "SERVER" ]; then
 		echo "FINISH";
 	fi
 fi
+function sigterm_handler() {
+        echo "SIGTERM signal received, try to gracefully shutdown all services..."
+        service monoserve$index stop
+        service monoserveApiSystem stop
+        service onlyofficeFeed stop
+        service onlyofficeIndex stop
+        service onlyofficeJabber stop
+        service onlyofficeMailAggregator stop
+        service onlyofficeMailWatchdog stop
+        service onlyofficeNotify stop
+        service onlyofficeBackup stop
+        #service onlyofficeHealthCheck stop
+        service god stop
+        service nginx stop
+        service mysql stop
+	exit 0
+}
+
+trap "sigterm_handler; exit" TERM
+while((1));do sleep 10; done;
