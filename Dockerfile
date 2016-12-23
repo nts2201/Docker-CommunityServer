@@ -29,7 +29,7 @@ RUN echo "${SOURCE_REPO_URL}" >> /etc/apt/sources.list && \
     add-apt-repository -y ppa:builds/sphinxsearch-rel22 && \
     echo "Start=No" >> /etc/init.d/sphinxsearch && \
     apt-get -y update && \
-    apt-get install --force-yes -yq mono-complete ca-certificates-mono apache2-utils realpath && \
+    apt-get install --force-yes -yq mono-complete ca-certificates-mono apache2-utils realpath rsync openssh-server && \
     echo "#!/bin/sh\nexit 0" > /usr/sbin/policy-rc.d && \
     apt-get install --force-yes -yq dumb-init  sphinxsearch onlyoffice-communityserver htop nano dnsutils && \
     rm -rf /var/lib/apt/lists/*
