@@ -42,7 +42,9 @@ RUN chmod -R 755 /app/onlyoffice/*.sh
 RUN bash -c "source /app/onlyoffice/setup/config/build.sh;\
       perm_change_ugid onlyoffice 1500; \
       perm_change_ugid mysql 1501;"
-
+RUN chown onlyoffice:onlyoffice /app/onlyoffice/setup/config/icon/*; \
+    cp -f /app/onlyoffice/setup/config/icon/*  /var/www/onlyoffice/WebStudio2/skins/default/images/onlyoffice_logo; \
+    cp -f /app/onlyoffice/setup/config/icon/*  /var/www/onlyoffice/WebStudio/skins/default/images/onlyoffice_logo;
 VOLUME ["/var/log/onlyoffice"]
 VOLUME ["/var/www/onlyoffice/Data"]
 VOLUME ["/var/lib/mysql"]
