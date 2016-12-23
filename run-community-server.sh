@@ -98,7 +98,12 @@ cp ${SYSCONF_TEMPLATES_DIR}/nginx/nginx.conf ${NGINX_ROOT_DIR}/nginx.conf
 cp ${SYSCONF_TEMPLATES_DIR}/nginx/onlyoffice-init ${NGINX_CONF_DIR}/onlyoffice
 rm -f /etc/nginx/conf.d/*.conf
 
-rsyslogd 
+rsyslogd
+
+chown onlyoffice:onlyoffice /app/onlyoffice/setup/config/icon/*;
+cp -f /app/onlyoffice/setup/config/icon/*  /var/www/onlyoffice/WebStudio2/skins/default/images/onlyoffice_logo;
+cp -f /app/onlyoffice/setup/config/icon/*  /var/www/onlyoffice/WebStudio/skins/default/images/onlyoffice_logo;
+
 service nginx start
 
 if [ ${ONLYOFFICE_SERVICES_INTERNAL_HOST} ]; then
