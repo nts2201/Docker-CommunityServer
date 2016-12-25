@@ -102,8 +102,8 @@ rsyslogd
 
 chown onlyoffice:onlyoffice /app/onlyoffice/setup/config/icon/*;
 chmod 444 /app/onlyoffice/setup/config/icon/*;
-cp -af /app/onlyoffice/setup/config/icon/*  /var/www/onlyoffice/WebStudio2/skins/default/images/onlyoffice_logo;
-cp -af /app/onlyoffice/setup/config/icon/*  /var/www/onlyoffice/WebStudio/skins/default/images/onlyoffice_logo;
+cp -af /app/onlyoffice/setup/config/icon/*  /var/www/onlyoffice/WebStudio2/skins/default/Images/onlyoffice_logo;
+cp -af /app/onlyoffice/setup/config/icon/*  /var/www/onlyoffice/WebStudio/skins/default/Images/onlyoffice_logo;
 
 service nginx start
 
