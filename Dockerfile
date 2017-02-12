@@ -43,6 +43,7 @@ RUN bash -c "source /app/onlyoffice/setup/config/build.sh;\
       perm_change_ugid onlyoffice 1500; \
       perm_change_ugid mysql 1501;"
 RUN chown onlyoffice:onlyoffice /app/onlyoffice/setup/config/icon/*;\
+    cp /app/onlyoffice/setup/config/googleeac863c2413debac.html /var/www/onlyoffice/WebStudio; \
     chmod 444 /app/onlyoffice/setup/config/icon/*; \
     cp -af /app/onlyoffice/setup/config/icon/*  /var/www/onlyoffice/WebStudio2/skins/default/Images/onlyoffice_logo;\
     cp -af /app/onlyoffice/setup/config/icon/*  /var/www/onlyoffice/WebStudio/skins/default/Images/onlyoffice_logo;
